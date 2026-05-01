@@ -1141,8 +1141,6 @@ const GROUPS = [
 
 // ── ADD TO CALENDAR ──────────────────────────────────────────
 function addToCal(groupName, time, loc) {
-  // Event date: Monday May 18, 2026
-  // Parse time like "6:40 PM" → hours/minutes
   const match = time.match(/(\d+):(\d+)\s*(AM|PM)/i);
   if (!match) return;
   let hours = parseInt(match[1]);
@@ -1151,32 +1149,36 @@ function addToCal(groupName, time, loc) {
   if (ampm === 'PM' && hours !== 12) hours += 12;
   if (ampm === 'AM' && hours === 12) hours = 0;
 
-  // Start time in UTC (EDT = UTC-4)
-  const startUTC = new Date(Date.UTC(2026, 4, 18, hours + 4, mins, 0));
-  const endUTC = new Date(startUTC.getTime() + 20 * 60 * 1000); // 20 min
+  const pad = n => String(n).padStart(2,'0');
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  const fmt = d => d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
-
-  const ics = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'BEGIN:VEVENT',
-    'DTSTART:' + fmt(startUTC),
-    'DTEND:' + fmt(endUTC),
-    'SUMMARY:' + groupName + ' - SAR Arts Festival',
-    'LOCATION:' + loc + ', SAR Academy, 655 W 254th St, Riverdale NY',
-    'DESCRIPTION:SAR Academy Arts Festival 2026. Your child performs at ' + time + ' in ' + loc + '.',
-    'END:VEVENT',
-    'END:VCALENDAR'
-  ].join('\r\n');
-
-  const blob = new Blob([ics], {type: 'text/calendar;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = groupName.replace(/[^a-zA-Z0-9]/g, '_') + '.ics';
-  a.click();
-  URL.revokeObjectURL(url);
+  if (isMobile) {
+    const startUTC = new Date(Date.UTC(2026, 4, 18, hours + 4, mins, 0));
+    const endUTC = new Date(startUTC.getTime() + 20 * 60 * 1000);
+    const fmt = d => d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+    const ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT',
+      'DTSTART:' + fmt(startUTC),
+      'DTEND:' + fmt(endUTC),
+      'SUMMARY:' + groupName + ' - SAR Arts Festival',
+      'LOCATION:' + loc + ', SAR Academy, 655 W 254th St, Riverdale NY 10471',
+      'DESCRIPTION:Your child performs at ' + time + ' in ' + loc + '.',
+      'END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'SAR_Arts_Festival.ics';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  } else {
+    const start = `20260518T${pad(hours)}${pad(mins)}00`;
+    const endH = mins + 20 >= 60 ? hours + 1 : hours;
+    const endM = (mins + 20) % 60;
+    const end = `20260518T${pad(endH)}${pad(endM)}00`;
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(groupName + ' - SAR Arts Festival')}&dates=${start}/${end}&details=${encodeURIComponent('Your child performs at ' + time + ' in ' + loc + '.')}&location=${encodeURIComponent(loc + ', SAR Academy, 655 W 254th St, Riverdale NY 10471')}&ctz=America/New_York`;
+    window.open(url, '_blank');
+  }
 }
 
 // ── SEARCH ──────────────────────────────────────────────────
