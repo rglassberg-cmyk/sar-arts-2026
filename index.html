@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAR Arts Festival 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:        #1C3F7D;
+      --blue-mid:    #2453A0;
+      --blue-dark:   #0F2548;
+      --pink:        #C8005A;
+      --pink-light:  #F5E6EE;
+      --teal:        #009CA6;
+      --teal-light:  #E0F5F6;
+      --orange:      #E87820;
+      --orange-light:#FEF0E3;
+      --green:       #5BA300;
+      --green-light: #EDF5E0;
+      --white:       #FFFFFF;
+      --off-white:   #F0F2F6;
+      --surface:     #FFFFFF;
+      --text:        #0D1B2E;
+      --text-mid:    #4B5563;
+      --text-soft:   #9CA3AF;
+      --border:      #E2E8F0;
+      --r:           12px;
+      --r-sm:        8px;
+      --r-pill:      50px;
+      --shadow:      0 2px 12px rgba(28,63,125,0.08);
+      --shadow-lg:   0 8px 32px rgba(28,63,125,0.14);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      min-height: 100dvh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ─────────────────────────────────────── */
+    .hdr {
+      background: var(--blue);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 3px 20px rgba(0,0,0,0.25);
+    }
+    .hdr-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 14px 18px 0;
+    }
+    .hdr-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .hdr-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hdr-logo-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    /* SAR-style colorful logo SVG */
+    .hdr-sar-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: white;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .hdr-sar-text span.s { color: #E87820; }
+    .hdr-sar-text span.a { color: #C8005A; }
+    .hdr-sar-text span.r { color: #009CA6; }
+    .hdr-title-col {}
+    .hdr-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1px;
+    }
+    .hdr-event {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: white;
+      line-height: 1.1;
+    }
+    .hdr-event em {
+      font-style: normal;
+      color: var(--pink);
+      /* pink underline effect */
+      background: var(--pink);
+      color: white;
+      padding: 0 5px 1px;
+      border-radius: 3px;
+      font-size: 15px;
+    }
+    .hdr-date {
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 2px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      margin: 0 -18px;
+      padding: 0 18px;
+      gap: 0;
+    }
+    .nav-tab {
+      flex: 1;
+      padding: 10px 4px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: rgba(255,255,255,0.5);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color .18s, border-color .18s;
+      text-align: center;
+    }
+    .nav-tab.active {
+      color: white;
+      border-bottom-color: var(--pink);
+    }
+    .nav-tab:hover:not(.active) { color: rgba(255,255,255,0.8); }
+
+    /* ── MAIN ────────────────────────────────────────── */
+    .main {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 20px 16px 96px;
+    }
+
+    /* ── PANELS ──────────────────────────────────────── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── SEARCH PANEL ────────────────────────────────── */
+    .search-hero {
+      text-align: center;
+      padding: 24px 12px 20px;
+    }
+    .search-hero h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      color: var(--blue);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .search-hero h2 span {
+      color: var(--pink);
+    }
+    .search-hero p {
+      font-size: 13px;
+      color: var(--text-mid);
+    }
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--text-soft);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      border: 2px solid var(--border);
+      border-radius: var(--r-pill);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      background: var(--surface);
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      box-shadow: var(--shadow);
+    }
+    .search-input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(28,63,125,0.1), var(--shadow);
+    }
+    .search-input::placeholder { color: var(--text-soft); }
+
+    /* Result cards */
+    @keyframes rise {
+      from { opacity:0; transform: translateY(8px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .result-card {
+      background: var(--surface);
+      border-radius: var(--r);
+      padding: 20px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-lg);
+      animation: rise .2s ease both;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+    .result-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+    }
+    .result-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .result-perf {
+      background: var(--off-white);
+      border-radius: var(--r-sm);
+      padding: 14px;
+      margin-bottom: 8px;
+      border-left: 4px solid var(--blue-mid);
+    }
+    .result-perf:last-child { margin-bottom: 0; }
+    .time-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--pink);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      padding: 3px 12px;
+      border-radius: var(--r-pill);
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+    .time-pill svg { width:11px; height:11px; opacity:.8; }
+    .result-perf-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .result-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+    }
+    .result-meta {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--text-mid);
+    }
+    .result-meta svg { width:13px; height:13px; color:var(--text-soft); flex-shrink:0; }
+
+
+    .cal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--blue);
+      color: white;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: var(--r-pill);
+      cursor: pointer;
+      margin-top: 10px;
+      letter-spacing: .02em;
+      transition: opacity .15s;
+    }
+    .cal-btn:hover { opacity: .85; }
+    .cal-btn svg { width: 13px; height: 13px; }
+
+    .choir-note {
+      background: var(--orange-light);
+      border: 1px solid #F5C994;
+      border-radius: var(--r-sm);
+      padding: 11px 14px;
+      font-size: 12px;
+      color: var(--text-mid);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+    .choir-note strong { color: var(--orange); }
+
+    .no-results {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .no-results strong { display:block; font-size:16px; color:var(--text-mid); margin-bottom:4px; }
+    .no-results span { font-size:13px; color:var(--text-soft); }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px 24px;
+    }
+    .empty-state-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--pink-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+    }
+    .empty-state-icon svg { width: 28px; height: 28px; color: var(--pink); }
+    .empty-state p { font-size:15px; font-weight:600; color:var(--text-mid); margin-bottom:4px; }
+    .empty-state span { font-size:13px; color:var(--text-soft); }
+
+    /* ── SCHEDULE PANEL ──────────────────────────────── */
+    .time-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0 10px;
+    }
+    .time-header:first-child { margin-top: 8px; }
+    .time-badge {
+      background: var(--blue);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: var(--r-pill);
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+    .time-rule { flex:1; height:1px; background:var(--border); }
+
+    .perf-card {
+      background: var(--surface);
+      border-radius: var(--r-sm);
+      padding: 13px 16px;
+      margin-bottom: 7px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid #ccc;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-left-width: 4px;
+      transition: box-shadow .15s;
+    }
+    .perf-card:hover { box-shadow: var(--shadow-lg); }
+    .perf-card.c-choir  { border-left-color: var(--orange); }
+    .perf-card.c-uri    { border-left-color: var(--teal); }
+    .perf-card.c-chaya  { border-left-color: var(--green); }
+    .perf-card.c-einat  { border-left-color: var(--orange); }
+    .perf-card.c-noah   { border-left-color: var(--pink); }
+    .perf-card.c-poets  { border-left-color: #8B5CF6; }
+    .perf-card.c-band   { border-left-color: var(--blue-mid); }
+    .perf-main { flex:1; min-width:0; }
+    .perf-title { font-size:14px; font-weight:600; color:var(--text); margin-bottom:4px; line-height:1.3; }
+    .perf-sub   { font-size:12px; color:var(--text-soft); display:flex; flex-wrap:wrap; gap:2px 12px; }
+    .perf-badge {
+      font-family: 'Poppins', sans-serif;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      padding:3px 10px;
+      border-radius:var(--r-pill);
+      white-space:nowrap;
+      flex-shrink:0;
+      align-self:flex-start;
+      margin-top:1px;
+    }
+    .b-choir  { background:var(--orange-light); color:var(--orange); }
+    .b-uri    { background:var(--teal-light);   color:var(--teal); }
+    .b-chaya  { background:var(--green-light);  color:var(--green); }
+    .b-einat  { background:var(--orange-light); color:var(--orange); }
+    .b-noah   { background:var(--pink-light);   color:var(--pink); }
+    .b-poets  { background:#F5F3FF; color:#7C3AED; }
+    .b-band   { background:#EFF6FF; color:var(--blue-mid); }
+
+    /* ── LOCATIONS PANEL ─────────────────────────────── */
+    .loc-card {
+      background: var(--surface);
+      border-radius: var(--r);
+      padding: 18px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .loc-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .loc-event {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--off-white);
+      font-size: 13px;
+    }
+    .loc-event:last-child { border-bottom:none; padding-bottom:0; }
+    .loc-time {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--pink);
+      font-size: 11px;
+      min-width: 52px;
+      padding-top: 2px;
+      letter-spacing: 0.02em;
+    }
+    .loc-desc { color: var(--text-mid); line-height: 1.45; }
+    .loc-desc strong { color: var(--text); display: block; margin-bottom: 1px; font-size: 13px; font-weight: 600; }
+    .loc-desc span { font-size: 11px; color: var(--text-soft); }
+
+    /* ── TONIGHT PANEL ───────────────────────────────── */
+    .tonight-hero {
+      background: var(--blue);
+      border-radius: var(--r);
+      padding: 32px 24px;
+      color: white;
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Geometric shapes pattern from SAR site */
+    .geo-shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.12;
+    }
+    .tonight-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+      position: relative;
+    }
+    .tonight-hebrew {
+      font-size: 28px;
+      font-weight: 400;
+      opacity: 0.8;
+      margin-bottom: 2px;
+      position: relative;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .tonight-theme {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      /* teal glow */
+      text-shadow: 0 0 20px rgba(0,156,166,0.5);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .tonight-main {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 1.0;
+      margin-bottom: 4px;
+      position: relative;
+    }
+    .tonight-main span { color: var(--pink); display: inline-block; background: var(--pink); color: white; padding: 0 8px 2px; border-radius: 4px; }
+    .tonight-year {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 1.0;
+      margin-bottom: 18px;
+      position: relative;
+      opacity: .6;
+    }
+    .tonight-detail-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .tonight-chip {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--r-pill);
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .info-card {
+      background: var(--surface);
+      border-radius: var(--r);
+      padding: 20px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .info-card-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--off-white);
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--off-white);
+      align-items: flex-start;
+    }
+    .tl-item:last-child { border-bottom:none; padding-bottom:0; }
+    .tl-time {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--pink);
+      min-width: 46px;
+      padding-top: 2px;
+      letter-spacing: 0.02em;
+    }
+    .tl-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0; margin-top: 5px;
+    }
+    .tl-body { flex: 1; }
+    .tl-body strong { font-size:14px; font-weight:600; color:var(--text); display:block; margin-bottom:2px; }
+    .tl-body span { font-size:12px; color:var(--text-mid); line-height:1.5; }
+
+    .ws-item {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--off-white);
+      font-size: 13px;
+      color: var(--text-mid);
+      align-items: flex-start;
+      line-height: 1.45;
+    }
+    .ws-item:last-child { border-bottom: none; }
+    .ws-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0; margin-top: 6px;
+    }
+    .ws-item strong { color: var(--text); font-weight: 600; }
+
+    /* ── PRINT VIEW ──────────────────────────────── */
+    .print-group {
+      background: var(--surface);
+      border-radius: var(--r);
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      page-break-inside: avoid;
+    }
+    .print-group-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--off-white);
+    }
+    .print-group-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--blue);
+    }
+    .print-group-meta {
+      text-align: right;
+      font-size: 11px;
+      color: var(--text-mid);
+    }
+    .print-group-meta strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--pink);
+    }
+    .print-students {
+      column-count: 2;
+      column-gap: 16px;
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .print-student {
+      break-inside: avoid;
+    }
+    .print-count {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 6px;
+      text-align: right;
+    }
+    @media print {
+      .hdr, .nav-tabs, .search-hero, .search-wrap, #searchResults,
+      button[onclick="window.print()"],
+      .print-group-hdr + p { display: none !important; }
+      .panel { display: block !important; }
+      #panel-search, #panel-schedule, #panel-locations, #panel-tonight { display: none !important; }
+      #panel-print { display: block !important; }
+      .main { padding: 0 8px; max-width: 100%; }
+      .print-group { box-shadow: none; border: 1px solid #ddd; margin-bottom: 8px; }
+      body { background: white; }
+      @page { margin: 0.5in; }
+    }
+
+  </style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-top">
+      <div class="hdr-logo-row">
+        <div class="hdr-logo-badge">
+          <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="13" fill="#0D1B2E"/>
+            <path d="M7 7h6v6H7z" fill="#E87820"/>
+            <path d="M15 7h6v6h-6z" fill="#C8005A"/>
+            <path d="M7 15h6v6H7z" fill="#009CA6"/>
+            <path d="M15 15h6v6h-6z" fill="#5BA300"/>
+          </svg>
+        </div>
+        <div>
+          <div class="hdr-eyebrow">SAR Academy · Riverdale, NY</div>
+          <div class="hdr-sar-text"><span class="s">S</span><span class="a">A</span><span class="r">R</span> <span style="color:white;font-size:18px;font-weight:600;">Arts Festival</span></div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:.06em;text-transform:uppercase;">May 18, 2026</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:1px;">6:15 – 8:30 PM</div>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <button class="nav-tab active" onclick="switchTab('search',this)">Find My Child</button>
+      <button class="nav-tab" onclick="switchTab('schedule',this)">Schedule</button>
+      <button class="nav-tab" onclick="switchTab('locations',this)">Locations</button>
+      <button class="nav-tab" onclick="switchTab('tonight',this)">Tonight</button>
+      <button class="nav-tab" onclick="switchTab('print',this)">Print</button>
+    </nav>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- ── FIND MY CHILD ──────────────────────────── -->
+  <div id="panel-search" class="panel active">
+    <div class="search-hero">
+      <h2>Find Your <span>Child</span></h2>
+      <p>Type any part of a student's name</p>
+    </div>
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input class="search-input" id="searchInput" type="text"
+        placeholder="First or last name…"
+        oninput="doSearch(this.value)"
+        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    </div>
+    <div id="searchResults">
+      <div class="empty-state">
+        <div class="empty-state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </div>
+        <p>Search for a student</p>
+        <span>Their performance time and location will appear here</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCHEDULE ───────────────────────────────── -->
+  <div id="panel-schedule" class="panel">
+    <div id="scheduleContent" style="padding-top:4px;"></div>
+  </div>
+
+  <!-- ── LOCATIONS ─────────────────────────────── -->
+  <div id="panel-locations" class="panel">
+    <div id="locationsContent" style="padding-top:16px;"></div>
+  </div>
+
+  <!-- ── TONIGHT ────────────────────────────────── -->
+  <div id="panel-tonight" class="panel">
+    <div class="tonight-hero">
+      <!-- Geometric shapes background -->
+      <svg class="geo-shapes" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect x="10" y="10" width="28" height="28" rx="4" fill="#E87820"/>
+        <circle cx="60" cy="55" r="14" fill="#C8005A"/>
+        <polygon points="120,20 140,50 100,50" fill="#009CA6"/>
+        <rect x="160" y="30" width="22" height="22" rx="11" fill="#5BA300"/>
+        <path d="M220 15 L235 40 L205 40Z" fill="#E87820"/>
+        <rect x="280" y="8" width="24" height="24" rx="3" fill="#C8005A" transform="rotate(20,292,20)"/>
+        <circle cx="350" cy="35" r="16" fill="#009CA6"/>
+        <rect x="10" y="100" width="20" height="20" rx="10" fill="#5BA300"/>
+        <polygon points="50,110 70,140 30,140" fill="#C8005A"/>
+        <circle cx="120" cy="130" r="10" fill="#E87820"/>
+        <rect x="310" y="100" width="26" height="26" rx="4" fill="#5BA300" transform="rotate(15,323,113)"/>
+        <circle cx="370" cy="120" r="12" fill="#C8005A"/>
+        <path d="M10 200 L30 230 L-10 230Z" fill="#009CA6"/>
+        <rect x="60" y="210" width="18" height="18" rx="9" fill="#E87820"/>
+        <rect x="330" y="200" width="22" height="22" rx="4" fill="#009CA6"/>
+        <circle cx="385" cy="210" r="14" fill="#5BA300"/>
+        <polygon points="140,260 165,300 115,300" fill="#E87820"/>
+        <circle cx="230" cy="280" r="18" fill="#C8005A"/>
+        <rect x="300" y="270" width="24" height="24" rx="12" fill="#E87820"/>
+      </svg>
+      <div class="tonight-eyebrow">SAR Academy · Schoolwide</div>
+      <div class="tonight-hebrew">בְּחַרְתָּ בַּחַיִּים</div>
+      <div class="tonight-theme">An Immersive ARTS Experience</div>
+      <div class="tonight-main"><span>Arts</span> Festival</div>
+      <div class="tonight-year">2026</div>
+      <div style="font-size:12px;opacity:.65;margin-bottom:14px;position:relative;font-style:italic;">Produced By SAR Academy Students</div>
+      <div class="tonight-detail-row">
+        <div class="tonight-chip">📅 Monday, May 18</div>
+        <div class="tonight-chip">🕕 6:15 – 8:30 PM</div>
+        <div class="tonight-chip">📍 655 W. 254th St., Riverdale</div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">Evening Timeline</div>
+      <div class="tl-item">
+        <div class="tl-time">6:15</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>Arrival</strong>
+          <span>Faculty Band plays on the Patio. Pick up your welcome packet. Light dinner in the Atrium.</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">6:25</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>Welcome &amp; Academy Choir</strong>
+          <span>Gather on the steps for welcome remarks and choir performance.</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">6:40</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>Performances Begin</strong>
+          <span>Music groups and 2nd Grade Poetry start across the building. Use "Find My Child" for your student's exact time and room.</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">All eve.</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>Galleries &amp; Workshops Open</strong>
+          <span>Art exhibits, animation festival, hands-on studios, and interactive galleries throughout the building.</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:15</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>MS Band &amp; Final Performances</strong>
+          <span>MS Band performs on the Patio. Last wave of music groups wraps up.</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>Evening Concludes</strong>
+          <span>Thank you for celebrating the arts with us!</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">An Evening Of · Open All Evening</div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>Art Installations</strong> by ELC–8th Grade Students</div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>Hands-on Art Workshops</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>3rd–5th Grade Musical Performances &amp; AC Choir</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>Hebrew Poetry Slam</strong> with 2nd Grade Poets</div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>Still Life Film Screening</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>GarageBand Listening Room</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>Gan Ilan Workshop</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>Kela Ilan Wine Tasting</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>ELC ART Sparks Experience</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>Family Drumming Circle</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>Photo Selfie Booth</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>Faculty Band "Shir Joy"</strong></div></div>
+      <div class="ws-item"><div class="ws-dot"></div><div><strong>...and More!</strong></div></div>
+    </div>
+  </div>
+
+
+  <!-- ── PRINT VIEW ────────────────────────────── -->
+  <div id="panel-print" class="panel">
+    <div style="text-align:center;padding:20px 0 16px;">
+      <h2 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;color:var(--blue);margin-bottom:4px;">Printable Program</h2>
+      <p style="font-size:13px;color:var(--text-mid);margin-bottom:14px;">All groups with student rosters for welcome packet folders</p>
+      <button onclick="window.print()" style="
+        background:var(--pink);color:white;border:none;
+        font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;
+        padding:10px 28px;border-radius:var(--r-pill);cursor:pointer;
+        letter-spacing:.03em;
+      ">Print / Save as PDF</button>
+    </div>
+    <div id="printContent"></div>
+  </div>
+
+</main>
+
+<script>
+const GROUPS = [
+  {
+    id:'poetry-1', type:'poets', gradeLabel:'2nd Grade',
+    name:'Hebrew Poetry Slam · Group 1',
+    teacher:'Ilana',
+    time:'6:40 PM', sort:642, loc:'Shul',
+    students:[
+      'Benishai, Asher','Engelhardt, Alexandra','Goldstein, Lia',
+      'Hadary, Arbel','Jonas, Margot','Kolatch, Liana',
+      'Kollander, Sophia','Mermelstein, Matisyahu','Reich, Maayan',
+      'Salzbank, Clara','Shem Tov, Aura Aliza','Twersky, Osher',
+      'Veetal, Joe Joe',
+      'Baruchin, Alma','Baruch, Gili',
+      'Pollack, Aiden','Rothwax, Orly'
+    ]
+  },
+  {
+    id:'poetry-2', type:'poets', gradeLabel:'2nd Grade',
+    name:'Hebrew Poetry Slam · Group 2',
+    teacher:'Ilana',
+    time:'7:05 PM', sort:707, loc:'Shul',
+    students:[
+      'Barris, Noah','Birnbaum, Oliver','Faleck, Maytal',
+      'Goodman, Ayla','Haehnel, Livia','Hepner, Zahara',
+      'Joly, Sarah','Kolatch, Libby','Kroll, Solly',
+      'Mermelstein, Yosef','Pell-Israel, Daniel','Savitt, Tal',
+      'Shoshani, Kinneret','Wadler, Shimrit',
+      'Howard, Nessia','Levy, Emilia'
+    ]
+  },
+  {
+    id:'poetry-3', type:'poets', gradeLabel:'2nd Grade',
+    name:'Hebrew Poetry Slam · Group 3',
+    teacher:'Ilana',
+    time:'7:25 PM', sort:727, loc:'Shul',
+    students:[
+      'Bochner, Dovi','Fox, Emmet','Grossman, Emma',
+      'Guenoun, Ethan','Itzkowitz, Liev','Kolb, Charlie',
+      'Lindenbaum, Maayan','Moerdler, Molly','Ollech, Sadie',
+      'Schlesinger, Hadas','Shamir, Ava','Shefa, Liron',
+      'Shrage, Orly','Silberman, Gemma','Wilner, Julian'
+    ]
+  },
+  {
+    id:'poetry-4', type:'poets', gradeLabel:'2nd Grade',
+    name:'Hebrew Poetry Slam · Group 4',
+    teacher:'Ilana',
+    time:'7:45 PM', sort:747, loc:'Shul',
+    students:[
+      'Amar, Noa','Atia, Ayala','Binstock, Avi',
+      'Bloch, Gracie','Brafmax, Jordana','Goldhaber, Charlotte',
+      'Haber, Libby','Kadosh-Rogers, Nathan','Kolet, Eliana',
+      'Mahler, Jesse','Rosenbaum, Yedidya','Schwartz, Tamar',
+      'Smokler, Tair',
+      "R'bibo, Eric",'Berkowitz, Jacob'
+    ]
+  },
+  {
+    id:'choir', type:'choir', gradeLabel:'Academy Choir',
+    name:'Academy Choir',
+    teacher:'Opening Ceremony',
+    time:'6:25 PM', sort:625, loc:'The Steps',
+    students:[
+      'Bella Baker','Nili Davis','Hallie Douglas','Aiden Fromer','Rivkie Golkin',
+      'Elinor Gordon','Charlie Hecht','Maya Hecht','Ruthy Hershfield','Caleb Kahane',
+      'Lola Katz','Jack Martin','Goldie Meshulam','Dalit Pomrenze','Boaz Silverman',
+      'Liana Spiewak','Livia Warshawsky','Annaelle Wiener','Andie Zanger','Sophie Zuckerman'
+    ]
+  },
+  {
+    id:'g3-uri', type:'uri', gradeLabel:'3rd Grade',
+    name:'Carnegie Hall Recorder',
+    teacher:'Uri Gurvich',
+    time:'6:40 PM', sort:640, loc:'Old Gym',
+    students:[
+      'Natan Abraham','Joshua Altman','Boaz Bernstein','James Bouskila','Nava Cohen',
+      'Gaya Eigvi','Daniel Farhi','Rebecca Golkin','Elinor Gordon','Maya Hecht',
+      'Anna Jakus','Jack Kanovsky','Isaiah Levy','Caroline Sandel','Lily Sandel',
+      'Abby Sassoon','Matan Schreiber','Batya Shamir','Ari Steinberg','Aviv Steinberger',
+      'Gabriel Skolnick','Liana Spiewak','Jack Wildman','Alex Wilson','Yeela Yagel',
+      'Adina Zimmerman'
+    ]
+  },
+  {
+    id:'g4-chaya-voice', type:'chaya', gradeLabel:'4th Grade',
+    name:'Voice Performance',
+    teacher:'Chaya Glaser',
+    time:'6:40 PM', sort:640, loc:'Music Room',
+    students:[
+      'Aria Ainsberg','Judy Bakst','Edna Benmoussa','Eden Danishevsky','Adina Dorfzaun',
+      'Mia Edelman','Talya Exler','Emma Gordon','Noa Hasson','Alexa Hershman',
+      'Lilly Hirtz','Eliana Joly','Esther Kerznhev','Naomie Marciano','Yakira Mitnick',
+      'Celia Moerdler','Eden Pell-Israel','Sheri Raskas','Effie Riesenberg','Ayala Sclar',
+      'Kira Schwab','Isabella Sneag','Hannah Wechselblatt'
+    ]
+  },
+  {
+    id:'g4-noah-guitar', type:'noah', gradeLabel:'4th Grade',
+    name:'Guitar Workshop',
+    teacher:'Noah Solomon',
+    time:'6:40 PM', sort:640, loc:'LS Science Lab',
+    students:[
+      'Tova Bader','Charlie Bendheim','Hannah Bochner','Harrison Ganz',
+      'Elijah Krause','Asher Lipshitz','Jack Martin','Noah Osband',
+      'Avi Senderowicz','Yehuda Sklarin','Micah Siegel','Noah Steinberg'
+    ]
+  },
+  {
+    id:'afterschool-uke', type:'einat', gradeLabel:'Afterschool',
+    name:'Ukulele Ensemble',
+    teacher:'Einat Pinsker',
+    time:'6:40 PM', sort:641, loc:'MS Science Lab',
+    students:[
+      'Nava Cohen','Rivkie Golkin','Nava Lehrfield','Leah Neuwirth','Eli Pearlson'
+    ]
+  },
+  {
+    id:'g3-chaya', type:'chaya', gradeLabel:'3rd Grade',
+    name:'Carnegie Hall Recorder',
+    teacher:'Chaya Glaser',
+    time:'7:05 PM', sort:705, loc:'Old Gym',
+    students:[
+      'Isabella Abikzer','Erez Braunstein','Yaakov Carr','Yakira Daniel','Ellie Debbi',
+      'Yuval Diamant','Simone Feit','Noah Green','Max Harris','Noemi Khazanov',
+      'Talia Klatt','Samson Kleinfeld','Adin Lerea','William Lerman','Mason Lowenstein',
+      'Julia Nadis','Leah Neuwirth','Samuel Nussbaum','Emma Perl','Solomon Rosenberg',
+      'James Townsend','Talia Villegas','Livia Warshawsky','Neil Wasserman',
+      'Nathaniel Zadoff','Andie Zanger'
+    ]
+  },
+  {
+    id:'g4-einat-uke', type:'einat', gradeLabel:'4th Grade',
+    name:'Ukulele Workshop',
+    teacher:'Einat Pinsker',
+    time:'7:05 PM', sort:705, loc:'LS Science Lab',
+    students:[
+      'Eliyahu Aronin','Daniel Baruchin','Nathaniel Brandler','Moses Courtney',
+      'Nate Douglas','Carmel Eigvi','Aiden Fromer','Shalva Greenman','Isaiah Katz',
+      'Ethan Krause','Ari Osband','Eli Pearlson','Lila Peters','Jonah Rotbard',
+      'Nessia Shefa','Benny Stavsky','Boaz Silverman','Zoey Weiss',
+      'Kedem Zcharia','Kayla Zirkind','Noah Zizmor'
+    ]
+  },
+  {
+    id:'g4-uri-key-mon', type:'uri', gradeLabel:'4th Grade',
+    name:'Keyboard Studio (Monday)',
+    teacher:'Uri Gurvich',
+    time:'7:05 PM', sort:705, loc:'MS Science Lab',
+    students:[
+      'William Ainsberg','Levi Fox','Grace Benishai','Colin Hagler','Caleb Kahane',
+      'Eli Schmuckler','Graham Silberstein','Tehila Wiener'
+    ]
+  },
+  {
+    id:'g3-einat', type:'einat', gradeLabel:'3rd Grade',
+    name:'Carnegie Hall Recorder',
+    teacher:'Einat Pinsker',
+    time:'7:25 PM', sort:725, loc:'Old Gym',
+    students:[
+      'Yishay Atia','Isabella Baker','Maayan Bareli','Olivia Bemak','Aroha Brafmax',
+      'Noah Cohn','Charlie Davis','Gracie Davis','Hallie Douglas','Eleanor Fleisch',
+      'Micah Fisch','Rei Hafif','Yedidya Greenfield','Atara Heller','Ruthy Hershfield',
+      'Dani Katz','Jace Laufer','Nava Lehrfield','Joey Oberstein','Harper Orgel',
+      'David Perl','James Pollack','Ava Salamon','Sammy Sturm',
+      'Zachary Veetal','Michael Zelkowitz','Sophie Zuckerman'
+    ]
+  },
+  {
+    id:'g4-uri-key-wed', type:'uri', gradeLabel:'4th Grade',
+    name:'Keyboard Studio (Wednesday)',
+    teacher:'Uri Gurvich',
+    time:'7:25 PM', sort:725, loc:'MS Science Lab',
+    students:[
+      'Mia Alpern','Sammie Feman','Ashira Hack','Ethan Haehnel','Max Howard',
+      'Nathaniel Jesselson','Claire Jonas','Talia Levy','Micah Lowe',
+      'Orlee Maslow','Halel Reich','Jacob Riemer','Azriella Schlaff-Pearlberg','Leor White'
+    ]
+  },
+  {
+    id:'g5-noah-guitar', type:'noah', gradeLabel:'5th Grade',
+    name:'Guitar Workshop',
+    teacher:'Noah Solomon',
+    time:'7:50 PM', sort:751, loc:'LS Science Lab',
+    students:[
+      'Nili Davis','Kira Faleck','Lani Faleck','Ava Goldstein','Gabriella Hakimi',
+      'Lola Katz','Caleb Rabinowitz','Sheri Raskas',
+      'George Sandel','Meir Satz','Annaelle Wiener'
+    ]
+  },
+  {
+    id:'g5-chaya-perc-mon', type:'chaya', gradeLabel:'5th Grade',
+    name:'Xylophone Ensemble (Monday)',
+    teacher:'Chaya Glaser',
+    time:'7:45 PM', sort:745, loc:'Music Room',
+    students:[
+      'Shira Engel','Annie Greenberg','Jack Guenoun','Layla Jesselson',
+      'Rena Klatt','Jacob Kraus','Isaac Nussbaum','Gabriella Rosenberg',
+      'Liat Shrage','Finn Turkel','Peleg Yogev','Olivia Zadoff'
+    ]
+  },
+  {
+    id:'g5-einat-key-mon', type:'einat', gradeLabel:'5th Grade',
+    name:'Keyboard Studio (Monday)',
+    teacher:'Einat Pinsker',
+    time:'7:45 PM', sort:745, loc:'MS Science Lab',
+    students:[
+      'Aderet Bass','Rosie Kessler','Ben Levine','Gilad Lindenbaum',
+      'Maytal Loeser','Hannah Metson','Caleb Nahmias','Lila Rabinowitz'
+    ]
+  },
+  {
+    id:'g5-uri-sound-mon', type:'uri', gradeLabel:'5th Grade',
+    name:'Soundtrack Engineering (Monday)',
+    teacher:'Uri Gurvich',
+    time:'7:50 PM', sort:750, loc:'STEM Room 1',
+    students:[
+      'Yoav Attias','Amitai Azizollahoff','Yogev Bernstein','Oz Dweck',
+      'Alma Eigvi','Nili Fisch','Allison Fox','Aiden Glassberg',
+      'Emma Haehnel','Mayer Neuman','Benny Oberstein','Elana Rossler',
+      'Ava Spindel','Naomi Steinberg','Barry Wasserman'
+    ]
+  },
+  {
+    id:'g5-chaya-perc-wed', type:'chaya', gradeLabel:'5th Grade',
+    name:'Xylophone Ensemble (Wednesday)',
+    teacher:'Chaya Glaser',
+    time:'8:15 PM', sort:815, loc:'Music Room',
+    students:[
+      'Kira Berg','Aiden Hakimi','Solomon Levin','Sammy Lindenbaum',
+      'Shira Mahler','Avinoam Schlenger','Dahlia Schneider',
+      'Scarlet Townsend','Isabella Vanderhoek'
+    ]
+  },
+  {
+    id:'g5-einat-key-wed', type:'einat', gradeLabel:'5th Grade',
+    name:'Keyboard Studio (Wednesday)',
+    teacher:'Einat Pinsker',
+    time:'8:15 PM', sort:815, loc:'MS Science Lab',
+    students:['Lily Gittler','Bella Schlesinger','Naama Solomon']
+  },
+  {
+    id:'g5-uri-sound-wed', type:'uri', gradeLabel:'5th Grade',
+    name:'Soundtrack Engineering (Wednesday)',
+    teacher:'Uri Gurvich',
+    time:'8:15 PM', sort:815, loc:'STEM Room 1',
+    students:[
+      'Elliot Cohen','Orianne Cohen','Neta Haber','Annie Harris',
+      'Noah Harrison','Samantha Leibowitz','Yaron Levi-Braha',
+      'Hallel Levine','Rebecca Litman','Meira Pell-Israel',
+      'Dalit Pomerenze','David Novetsky'
+    ]
+  },
+  {
+    id:'ms-band', type:'band', gradeLabel:'Middle School',
+    name:'MS Band',
+    teacher:'Tony Romano',
+    time:'8:15 PM', sort:816, loc:'Patio (Main Entrance)',
+    students:[
+      'Liora Bloch','Leo Katz','Zohar Katz','Dov Pasternak',
+      'Shalev Ryman','Emanuel Stern','Akiva Weiner','Hailey Wildman'
+    ]
+  }
+];
+
+
+// ── ADD TO CALENDAR ──────────────────────────────────────────
+function addToCal(groupName, time, loc) {
+  // Event date: Monday May 18, 2026
+  // Parse time like "6:40 PM" → hours/minutes
+  const match = time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!match) return;
+  let hours = parseInt(match[1]);
+  const mins = parseInt(match[2]);
+  const ampm = match[3].toUpperCase();
+  if (ampm === 'PM' && hours !== 12) hours += 12;
+  if (ampm === 'AM' && hours === 12) hours = 0;
+
+  // Start time in UTC (EDT = UTC-4)
+  const startUTC = new Date(Date.UTC(2026, 4, 18, hours + 4, mins, 0));
+  const endUTC = new Date(startUTC.getTime() + 20 * 60 * 1000); // 20 min
+
+  const fmt = d => d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'BEGIN:VEVENT',
+    'DTSTART:' + fmt(startUTC),
+    'DTEND:' + fmt(endUTC),
+    'SUMMARY:' + groupName + ' - SAR Arts Festival',
+    'LOCATION:' + loc + ', SAR Academy, 655 W 254th St, Riverdale NY',
+    'DESCRIPTION:SAR Academy Arts Festival 2026. Your child performs at ' + time + ' in ' + loc + '.',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([ics], {type: 'text/calendar;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = groupName.replace(/[^a-zA-Z0-9]/g, '_') + '.ics';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── SEARCH ──────────────────────────────────────────────────
+function doSearch(val) {
+  const q = val.trim().toLowerCase();
+  const el = document.getElementById('searchResults');
+
+  if (q.length < 2) {
+    el.innerHTML = `<div class="empty-state">
+      <div class="empty-state-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </div>
+      <p>Search for a student</p>
+      <span>Their performance time and location will appear here</span>
+    </div>`;
+    return;
+  }
+
+  const map = new Map();
+  GROUPS.forEach(g => {
+    g.students.forEach(s => {
+      if (s.toLowerCase().includes('pending') || s.toLowerCase().includes('sign-up')) return;
+      if (s.toLowerCase().includes(q)) {
+        if (!map.has(s)) map.set(s, []);
+        map.get(s).push(g);
+      }
+    });
+  });
+
+  if (!map.size) {
+    el.innerHTML = `<div class="no-results">
+      <strong>No results found</strong>
+      <span>Try a different spelling, or check back once the full roster is confirmed</span>
+    </div>`;
+    return;
+  }
+
+  let html = '';
+  map.forEach((groups, name) => {
+    const choirs = groups.filter(g => g.id === 'choir');
+    const perfs  = groups.filter(g => g.id !== 'choir');
+    html += `<div class="result-card"><div class="result-name">${name}</div>`;
+    perfs.forEach(g => {
+      html += `<div class="result-perf">
+        <div class="time-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          ${g.time}
+        </div>
+        <div class="result-perf-name">${g.gradeLabel} · ${g.name}</div>
+        <div class="result-meta-row">
+          <div class="result-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            ${g.loc}
+          </div>
+          ${g.teacher !== 'TBD' ? `<div class="result-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            ${g.teacher}
+          </div>` : ''}
+        </div>
+      </div>`;
+    });
+    choirs.forEach(() => {
+      html += `<div class="choir-note">
+        <strong>Also in Academy Choir</strong> — performing at <strong>6:25 PM on The Steps</strong> during the welcome gathering.
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  el.innerHTML = html;
+}
+
+// ── SCHEDULE ────────────────────────────────────────────────
+function buildSchedule() {
+  const times = [...new Set(GROUPS.map(g => g.sort))].sort((a,b) => a-b);
+  let html = '';
+  times.forEach(t => {
+    const gs = GROUPS.filter(g => g.sort === t);
+    html += `<div class="time-block">
+      <div class="time-header">
+        <div class="time-badge">${gs[0].time}</div>
+        <div class="time-rule"></div>
+      </div>`;
+    gs.forEach(g => {
+      const labels = {uri:'Uri',chaya:'Chaya',einat:'Einat',noah:'Noah',choir:'Choir',band:'Band',poets:'Poetry'};
+      html += `<div class="perf-card c-${g.type}">
+        <div class="perf-main">
+          <div class="perf-title">${g.gradeLabel} · ${g.name}</div>
+          <div class="perf-sub">
+            <span>📍 ${g.loc}</span>
+            <span>· ${g.teacher}</span>
+          </div>
+        </div>
+        <div class="perf-badge b-${g.type}">${labels[g.type] || g.type}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  document.getElementById('scheduleContent').innerHTML = html;
+}
+
+// ── LOCATIONS ────────────────────────────────────────────────
+function buildLocations() {
+  const locMap = new Map();
+  GROUPS.forEach(g => {
+    if (!locMap.has(g.loc)) locMap.set(g.loc, []);
+    locMap.get(g.loc).push(g);
+  });
+  const sorted = [...locMap.entries()].sort((a,b) =>
+    Math.min(...a[1].map(g=>g.sort)) - Math.min(...b[1].map(g=>g.sort))
+  );
+  const icons = {
+    'The Steps':'🎭','Old Gym':'🎼','Music Room':'🥁',
+    'LS Science Lab':'🎸','MS Science Lab':'🎹','STEM Room 1':'🎛️',
+    'Shul':'✍️','Patio (Main Entrance)':'🎺'
+  };
+  let html = '';
+  sorted.forEach(([loc, groups]) => {
+    html += `<div class="loc-card">
+      <div class="loc-name">${icons[loc] || '📍'} ${loc}</div>`;
+    groups.sort((a,b) => a.sort-b.sort).forEach(g => {
+      html += `<div class="loc-event">
+        <div class="loc-time">${g.time}</div>
+        <div class="loc-desc">
+          <strong>${g.gradeLabel} · ${g.name}</strong>
+          <span>${g.teacher}</span>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  html += `<div class="loc-card" style="border:2px dashed var(--border);background:var(--off-white);box-shadow:none;">
+    <div class="loc-name" style="color:var(--text-mid);">🎨 All Evening · Various Locations</div>
+    <div class="loc-event">
+      <div class="loc-time" style="color:var(--text-mid);">6:40+</div>
+      <div class="loc-desc">Art galleries, animation festival, hands-on workshops, and exhibits open throughout the building all evening. See the "Tonight" tab for the full list.</div>
+    </div>
+  </div>`;
+  document.getElementById('locationsContent').innerHTML = html;
+}
+
+// ── TABS ─────────────────────────────────────────────────────
+function switchTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+
+// ── PRINT VIEW ───────────────────────────────────────────────
+function buildPrintView() {
+  const sorted = [...GROUPS].sort((a,b) => a.sort - b.sort);
+  let html = '';
+  sorted.forEach(g => {
+    const realStudents = g.students.filter(s =>
+      !s.toLowerCase().includes('pending') && !s.toLowerCase().includes('sign-up')
+    );
+    html += `<div class="print-group">
+      <div class="print-group-hdr">
+        <div>
+          <div class="print-group-title">${g.gradeLabel} · ${g.name}</div>
+          <div style="font-size:12px;color:var(--text-mid);margin-top:2px;">${g.teacher}</div>
+        </div>
+        <div class="print-group-meta">
+          <strong>${g.time}</strong>
+          ${g.loc}
+        </div>
+      </div>
+      <div class="print-students">
+        ${realStudents.sort().map((s,i) => `<div class="print-student">${i+1}. ${s}</div>`).join('')}
+      </div>
+      <div class="print-count">${realStudents.length} students</div>
+    </div>`;
+  });
+  document.getElementById('printContent').innerHTML = html;
+}
+
+buildSchedule();
+buildLocations();
+buildPrintView();
+</script>
+</body>
+</html>
